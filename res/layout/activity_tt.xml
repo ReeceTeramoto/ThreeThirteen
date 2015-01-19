@@ -1,0 +1,172 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/topGuiView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cs301.TTProj.TTActivity" >
+
+    <edu.up.cs301.animation.AnimationSurface
+        android:id="@+id/TTAnimSurface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="false" />
+
+    <Button
+        android:id="@+id/goOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/discardButton"
+        android:layout_alignBottom="@+id/discardButton"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/discardButton"
+        android:height="68dip"
+        android:minHeight="20dp"
+        android:text="@string/goOut"
+        android:width="100dip" />
+
+    <TextView
+        android:id="@+id/scorePlayer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/scorePlayer3"
+        android:layout_marginLeft="100dp"
+        android:text="@string/blank"
+        android:textSize="20sp"
+        android:typeface="serif" />
+
+    <TextView
+        android:id="@+id/scorePlayer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/scorePlayer2"
+        
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="100dp"
+        android:text="@string/blank"
+        android:textSize="20sp"
+        android:typeface="serif" />
+
+    <TextView
+        android:id="@+id/scorePlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/scorePlayer1"
+        
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="100dp"
+        android:text="@string/blank"
+        android:textSize="20sp"
+        android:typeface="serif" />
+
+    <TextView
+        android:id="@+id/scorePlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/scores"
+        
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="100dp"
+        android:text="@string/blank"
+        android:textSize="20sp"
+        android:typeface="serif" />
+
+    <TextView
+        android:id="@+id/scores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/scoreBoard"
+        android:textSize="30sp"
+        android:typeface="serif" />
+
+    <TextView
+        android:id="@+id/messageBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/scorePlayer1"
+        android:layout_marginRight="80dp"
+        android:background="@drawable/back"
+        android:gravity="center_vertical|center_horizontal"
+        android:maxLines="3"
+        android:maxWidth="250dp"
+        android:text="@string/noMessage"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="25sp"
+        android:typeface="serif" />
+
+    <TextView
+        android:id="@+id/drawPile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/discardButton"
+        android:layout_alignBottom="@+id/discardButton"
+        android:layout_marginLeft="100dp"
+        android:layout_toRightOf="@+id/scores"
+        android:text="@string/drawPile"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp"
+        android:typeface="serif" />
+
+    <Button
+        android:id="@+id/discardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/scores"
+        android:layout_marginLeft="65dp"
+        android:layout_toRightOf="@+id/drawPile"
+        android:height="68dip"
+        android:text="@string/discard"
+        android:width="100dip" />
+
+    <TextView
+        android:id="@+id/roundGoOutInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/blank"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|normal"
+        android:typeface="serif" />
+
+    <Button
+        android:id="@+id/insertButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/insert"
+        android:minHeight="75dp"
+        android:minWidth="150dp"
+        android:layout_below="@+id/swapButton"
+        android:layout_marginRight="39dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/swapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/messageBoard"
+        android:layout_marginRight="39dp"
+        android:layout_marginTop="225dp"
+        android:minHeight="75dp"
+        android:minWidth="150dp"
+        android:text="@string/swap"
+        android:textColorLink="@color/black"
+        android:textSize="15sp" />
+
+</RelativeLayout>

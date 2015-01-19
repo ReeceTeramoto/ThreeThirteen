@@ -1,0 +1,110 @@
+Log.txt
+
+<<<<<<<<<<<<<<GUI Bugs (TTHumanPlayer)>>>>>>>>>>>>>>
+Problem: 
+	If a network player is selected as a player and the game starts 
+	without a network player connected, tapping the screen causes the game to crash. 
+Solution: At the very beginning of the OnTouch method, if the state is null, 
+	the method simply returns. 
+
+Problem: 
+	If the player taps a card (the card gets highlighted) and then taps on a blank part
+	of the screen, the card stays highlighted although the TTHumanPlayer class considers the card
+	to actually have been "deselected." Thus, if the player then taps the discard button, 
+	the card will not be discarded. 
+Solution: 
+	The onTouch method sets the haveCardDownIndex boolean to false (so that no highlight is drawn)
+	if the player taps a blank area on the screen (meaning the player did not tap the discard pile, draw pile, 
+	any of the cards, the swap button, or the insert button).
+
+Problem: 
+	There is one "Message Board" TextView on the GUI that tells the player whose turn it is
+	and guides the player through a turn. It also informs the player if another player goes out. 
+	However, the messages change so rapidly that, if the computer player goes out (for example), 
+	the human player never sees the message indicating someone has gone out (leading to much confusion!)
+Solution: 
+	Added another TextView on the top of the GUI that indicates what round it is 
+	and displays the winning hand of the player who went out. In addition, the screen flashes green 
+	when a player has gone out. 
+
+
+
+<<<<<<<<<<<<<<<AI Bugs>>>>>>>>>>>>>>
+TTComputerPlayerSmart: 
+	priorityNums length is not the same size as the number of cards in the AI's hand. 
+Solution: 
+	The for loop that adds the priorityNums to the ArrayList uses a less than or equal to, 
+	instead of a less than, deleted the equal signs in the for loops.  Another issue was that 
+	runs and sets were being added multiple times, which was fixed by creating a temp copy of 
+	the ArrayList of Cards and putting that ArrayList into the runs and sets ArrayLists and then 
+	clearing the temp ArrayLists.
+
+TTComputerPlayerSmart: 
+	The AI tries to discard a null card. 
+Solution: 
+	This issue was caused by the issues with the priorityNums, however fixed the problem with 
+	the null checks, where there should have been ORs instead of ANDs in the if statement conditions.
+	
+TTComputerPlayerSmart: 
+	Smart AI never reaches the discard phase.
+Solution: 
+	Put the discard phase in an if statement at the end of the rearrange phase, so that it discards 
+	if the two Decks match. 
+ 
+TTComputerPlayerSmart: 
+	Smart AI ignores runs or sets that are at the end of the suit (last card is a King).
+Solution: 
+	Added a case for the final iteration of the for loops (the highest card in the suit) so 
+	that it checks if the last  temp run or set ArrayList has a valid run or set.
+
+TTComputerPlayerSmart: 
+	Smart AI does not properly hold on to partial sets, did not put a card into a partial set 
+	to create a complete set.
+Solution: 
+	The AI was set to look for the next card, as dictated by the enum for the class Suit.  
+	Changed the code so that it didn't check for the order of the cards, when checking for sets.
+
+
+>>>>>>>>>>>>>>>>>TTLocalGame Bugs<<<<<<<<<<<<<<<<<<<<<<
+Problem:
+	Game ends after making any action.
+Solution: 
+	Changed checkIfGameOver to return null when the game is not over.
+	
+Problem: 
+	Game crashes when draw pile is emptied.
+Solution: 
+	Added a condition to shuffle the discard pile and set it to the draw pile when the draw pile is empty.
+
+Problem: 
+	Players allowed to discard or draw null cards. 
+Solution: 
+	Added a null check.
+	
+Problem: 
+	Player's hand began to empty as he/she discarded cards, leading to out-of-bounds exceptions.
+Solution: 
+	Added nulls to the player's hand array every time the player discarded a card.
+	
+Problem: 
+	Player allowed to go out with a run of three cards where the first two cards are the same
+	suit and the last card is a different suit.
+Solution: 
+	Boundary condition check.
+	
+Problem: 
+	Player not allowed to rearrange when it is not his/her turn.
+Solution: 
+	Set canMove to always return true.
+
+<<<<<<<<<<<<<<<<<<<<TTRearrangeAction Bugs>>>>>>>>>>>>>>>>>>>>
+Problem: 
+	Proxy player not allowed to rearrange cards, else game hangs.
+Solution:
+	Removed the copy of the player instance variable previously added to TTRearrangeAction.
+
+<<<<<<<<<<<<<<<<<<<<TTState Bugs>>>>>>>>>>>>>>>>>>>>>>>
+Problem:
+	Scores not being updated on network player.
+Solution:
+	Removed the "static" declaration for the variable holding the array of scores.
